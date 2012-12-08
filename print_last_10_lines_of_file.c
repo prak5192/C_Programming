@@ -17,7 +17,7 @@ int main(void){
     FILE *fd = NULL;
     int number = 10;
     int ret = PASS;
-    char c = 'p';
+    char c ;
 
     fd = fopen("text.txt","r");
     if(fd == NULL){
@@ -41,9 +41,6 @@ int main(void){
             number--;
         }
     }
-    ret = ftell(fd);
-    printf("Fd current position = %d\n",ret);
-    c = 'p';
     while(c != EOF){
         c = fgetc(fd);
         printf("%c",c);
