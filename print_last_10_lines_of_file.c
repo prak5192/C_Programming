@@ -36,7 +36,6 @@ int main(void){
     while (( number != 0 ) || ((ret = ftell(fd)) == 0)){
         fseek(fd,-2,SEEK_CUR);
         c = fgetc(fd);
-        printf("%c",c);
         if(c == '\n'){
             number--;
         }
