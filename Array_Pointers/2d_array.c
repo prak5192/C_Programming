@@ -31,12 +31,26 @@ int main(void)
     int ret = PASS;
 
     ret =  autofill(a);
-    printf("The array list is \n");
+
+    printf("The array list is \n\n");
     for (i = 0 ; i < ROW ; i++){
         for (j = 0 ; j<COL ; j++){
             printf("Array [%d][%d] => %d\n",i,j,a[i][j]); 
         }
     }
+    
+    printf("\nPrinting the address of the arrays\n\n");
+    for(i = 0; i < ROW; i++){
+        printf("A[%d] 's address  => %u\n",i , a[i]);
+    } 
+
+    printf("\nPrinting in different style\n\n");
+    for (i = 0 ; i < ROW ; i++){
+        for (j = 0 ; j<COL ; j++){
+            printf("Array [%d][%d] => %d\n",i,j,*((*(a +i)) + j)); 
+        }
+    }
+
 
     return ret;
 }
