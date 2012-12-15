@@ -5,6 +5,7 @@
     
 */
 
+#include<stdio.h>
 
 struct employee
 {
@@ -14,6 +15,6 @@ struct employee
 };
 
 int main(void){
-    printf("Sizeof struct employee is %d\n", sizeof(struct employee))
+    printf("Sizeof struct employee is %d\n", sizeof(struct employee));
     return 0;
 }
