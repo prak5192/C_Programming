@@ -19,3 +19,7 @@ Good practice program in C
 3. git add "file name"
 4. git commit -m "Comment"
 5. git push origin master:master
+
+To pull out a file from a directory which is changed use this command
+6. git pull origin 
+    Note: here origin is branch name. This command is used to take out all the modefied files from the repository
