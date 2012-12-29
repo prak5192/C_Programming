@@ -5,6 +5,9 @@
 
 int main(void)
 {
+    int sum = 0;
+    
+    
 	
 	return 0;
 }
