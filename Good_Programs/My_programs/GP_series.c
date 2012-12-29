@@ -1,4 +1,8 @@
 /*
+	File: GP_series.c
+	Brief: A program for sum of the series.
+	Date: 29th Dec 2012
+		
 	Sum of 1 + 2 + 3 + 4 + 5 + ... + infinity  series in c programming language
 	if a< 1
 		sum = a/(1-r)
