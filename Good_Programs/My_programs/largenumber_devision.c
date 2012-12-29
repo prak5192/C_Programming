@@ -8,5 +8,5 @@
 
 int main(void){
 
-	retrun 0;
+	return 0;
 }
