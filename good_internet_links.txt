@@ -4,3 +4,8 @@
 */
 
 1. http://www.cquestions.com/
+
+2. GDB debugger
+   =================
+		http://beej.us/guide/bggdb/
+	
