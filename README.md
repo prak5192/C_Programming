@@ -19,7 +19,8 @@ Good practice program in C
 3. git add "file name"
 4. git commit -m "Comment"
 5. git push origin master:master
+6. git branch branch_name 
+7. git checkout branch   // to go particualr branch 
+8. git branch // to see on which branch we are currently now
+9. git checkout HEAD filename_or_dirname // TO pull any one file directory
 
-To pull out a file from a directory which is changed use this command
-6. git pull origin 
-    Note: here origin is branch name. This command is used to take out all the modefied files from the repository
