@@ -1,4 +1,4 @@
-all: print_last_10_lines_of_file struc_hack sum_natural_numbers series_sum1 GP_series largenumber_multiplication largenumber_devision largest_sum_contiguous_subarray palindrome add add_number 2nd_largest_number
+all: print_last_10_lines_of_file struc_hack sum_natural_numbers series_sum1 GP_series largenumber_multiplication largenumber_devision largest_sum_contiguous_subarray palindrome add add_number 2nd_largest_number number_conversion
 
 print_last_10_lines_of_file:
 	gcc print_last_10_lines_of_file.c -o print_last_10_lines_of_file
@@ -35,6 +35,8 @@ add_number:
 
 palindrome:
 	gcc palindrome.c -o palindrome
+number_conversion:
+	gcc number_conversion.c -o number_conversion
 
 clean:
 	@rm -rf print_last_10_lines_of_file
@@ -49,3 +51,5 @@ clean:
 	@rm -rf add
 	@rm -rf add_number
 	@rm -rf palindrome
+	@rm -rf number_conversion 
+   
