@@ -23,8 +23,7 @@ struct node {
 };	
 
 
-struct node * NewNode(struct node *node; int data);
-{
+struct node * NewNode(int data){
     struct node * node;
     node = (struct node *) malloc(sizeof(struct node ));
     node->data = data;
@@ -33,10 +32,43 @@ struct node * NewNode(struct node *node; int data);
     return node;
 }
 
+void inorder(struct node *p) 
+{
+    if(p!=NULL)
+    {   
+        inorder(p->left);
+        printf("Data :%d\n",p->data);
+        inorder(p->right);
+    }   
+    else {
+    	return;
+    }
+}
+
+struct node * insert(struct node * node, int data){
+    if(node == NULL){
+        return (NewNode(data));
+    } else {
+        if( data <= node->data){
+            node->left = insert(node->left,data);
+        } else {
+            node->right = insert(node->right,data);
+        }
+        return node;
+    }
+}
 
 
 int main(void){
+    struct node * node = NULL;
+    int count = 3;
+    int i;
+    int data;
+    
+    for( i = 1; i <= count ; i++){
+        node = insert(node,i);     
+    }
 
-
+    inorder(node);    
     return 0;
 }
