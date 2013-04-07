@@ -11,7 +11,11 @@ struct node
 
 main()
 {
-    int choice,n,m,po,i;
+    int choice;
+    int n;
+    int m;
+    int po;
+    int i;
     last=NULL;
     while(1)
     {
