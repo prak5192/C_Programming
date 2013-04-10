@@ -1,11 +1,15 @@
 /* Thsi peice of code will print the file contents on the terminal */
 
-
+/* Showing usage of the folowoing commands 
+1. fopen()
+2. fclose()
+3. fgetc()
+4. putchar()
+*/
 
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
 
 int main(int argc, char * argv[]){
     printf("This program is used to print the file content on the terminal\n");
@@ -24,10 +28,9 @@ int main(int argc, char * argv[]){
     }
 
     while(( c = fgetc(fp)) != EOF){
-        printf("%c",c);
+        putchar(c);
     }
 
     fclose(fp);
     return 0;
 }
-
