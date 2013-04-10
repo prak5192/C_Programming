@@ -1,0 +1,53 @@
+Compilation process
+operator table
+if else
+loop with break and continue
+How to use , in for loops
+Function and recursion difference
+Storage class
+All bitwise operators
+Arrays
+Macros with argumenta nd macros without argument
+# & ## symbol
+Count the number of bits of a given number
+Getting n bits from the position P
+Swapping two number with bitwise operator
+using recursion write function for strcmp, strlen, strcpy
+Bubble sort, seletion sort, quick sort, merge sort,
+vois/generic pointer, funcion pointer, pointer returning a function
+Dynamic memory allocation
+Double and triple pointer
+Difference between structure and union
+Structure padding
+nesting of structure and union
+bit feilds
+File related functions:
+    1. fopen
+    2. fclose
+    3. fseek
+    4. fwrite
+    5. fread 
+    6. fflush
+    7. fpurge
+    8. fgetc
+    9. fputc
+    10. fgets
+    11.  fscanf
+    12. fprintf
+    13. filecopy
+    14. filecat
+    15. using commnd line arguments
+ variable number of arguments
+ command line arguments
+
+
+Data structure
+================
+1. Single linked list
+2. Stack and queue
+3. Circular linked list including circular queue
+4. double linked list
+5. Trees
+6. enum
+7. typedef
+
