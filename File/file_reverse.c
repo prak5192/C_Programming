@@ -12,48 +12,47 @@
 #include<stdlib.h>
 
 int main(int argc, char * argv[]){
-    printf("This program is used to reverse a content of one file and wite to other file.\n");
-    char c;
-    FILE *fp1;
-    FILE *fp2;
-
-    if(argc < 3 ){
-        printf("Usage: ./execuatbale <Filename1> <Filename2>\n");
+	printf("This program is used to reverse a content of one file and wite to other file.\n");
+	char c;
+	long int i;
+	FILE *fp1;
+	FILE *fp2;
+	
+	if(argc < 3 ){
+		printf("Usage: ./execuatbale <Filename1> <Filename2>\n");
 		printf("Filename1: The source file\nFilename2: The destination file\n");
-        return 0;
-    }
-
-    fp1 = fopen(argv[1], "r+b");
-    if(fp1 == NULL){
-        printf("Error in opening the file => %s\n",argv[1]);
-        exit(1);
-    }
+		return 0;
+	}
+	
+	fp1 = fopen(argv[1], "r+b");
+	if(fp1 == NULL){
+		printf("Error in opening the file => %s\n",argv[1]);
+		exit(1);
+	}
 	fp2 = fopen(argv[2], "w+");
-    if(fp2 == NULL){
-        printf("Error in opening the file => %s\n",argv[2]);
-        exit(1);
-    }
-
+	if(fp2 == NULL){
+		printf("Error in opening the file => %s\n",argv[2]);
+		exit(1);
+	}
+	
 	fseek(fp1,0,SEEK_END);
-	long int pos = ftell(fp1);
-	printf("%ld\n", pos);
-/*
-    while(1){
-		//fseek(fp1,-2,SEEK_CUR);
+	i = ftell(fp1);
+	fseek(fp1,-2,SEEK_CUR);
+	while(1){
 		c = fgetc(fp1);
+		fseek(fp1,-2,SEEK_CUR);
 		if( c == EOF){
+			printf("C is equal to EOF\n");
 			break;
 		} 
-		printf("| %c\t",c);
-		sleep(1);
-		fputc(c,fp2);
-		if( ftell(fp1) == 0){
-			printf("Reverse of the file is Over\n");
+		i--;
+		if( i == 0){
 			break;
 		}
-    }
-*/
-    fclose(fp1);
-    fclose(fp2);
-    return 0;
+		fputc(c,fp2);
+	}
+	printf("Count value %ld\n", i);
+	fclose(fp1);
+	fclose(fp2);
+	return 0;
 }
