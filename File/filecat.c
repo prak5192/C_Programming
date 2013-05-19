@@ -21,13 +21,17 @@ int main(int argc, char * argv[]){
         return 0;
     }
 
-    fp = fopen(argv[1], "r+");
+    fp = fopen(argv[1], "r+b");
     if(fp == NULL){
         printf("Error in opening the file => %s\n",argv[1]);
         exit(1);
     }
 
-    while(( c = fgetc(fp)) != EOF){
+    while(1){
+		c = fgetc(fp);
+		if( c == EOF){
+			break;
+		} 
         putchar(c);
     }
 
