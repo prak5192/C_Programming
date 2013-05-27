@@ -14,12 +14,15 @@ struct node
 	struct node *link;
 };
 
+struct node *new = NULL;
 struct node *p=NULL;
 void delet_pos(int);
 void delet_data(int);
 void append_mid(int ,int);
 void append_begg(int);
 void append_end(int );
+void save_to_file(void);
+void read_from_file(void);
 void revers();
 void display();
 
@@ -29,9 +32,9 @@ int main(void)
 	while(1)
 	{
 
-		printf("\nenter ur option:\n");
-		printf("\n1:insert the number in the front\n2:insert the element in the end\n3:append in the mid\n4:display the elements\n");
-		printf("5:delet the node w.r.t pos\n6:delet the node with respect to data\n7:reverse the linke list\n8:exit\n");
+		printf("\nEnter ur option:\n");
+		printf("\n1:Insert the number in the front\n2:Insert the element in the end\n3:Append in the mid\n4:display the elements\n");
+		printf("5:Delet the node w.r.t pos\n6:Delet the node with respect to data\n7:Reverse the linke list\n8:Write linked list to a file\n");        printf("9:Read linked list from a file.\n10:Exit\n");
 		scanf("%d",&ch);
 		switch(ch)
 		{
@@ -66,8 +69,16 @@ int main(void)
 			break;
 		case 7:
 			revers();
-			break;
-		case 8:
+		    break;
+	    case 8:
+            printf("Writting the linked list on the file :\n");
+            save_to_file();    
+            break;
+        case 9:
+            printf("Read from the file :\n");
+            read_from_file();    
+            break;
+		case 10:
 			exit(0);
 		}
 	}
@@ -199,10 +210,10 @@ void display()
 {
 	struct node* q;
 	q = p;
+    printf("\nDisplaying from file  Volatile database\n");
 	if(q==NULL)
 	{
 		printf("no node to display\n");
-		return ;
 	}
 	else
 	{
@@ -212,11 +223,22 @@ void display()
 			q= q->link;
 		}
 	
-		return;
+	}
+    printf("\nDisplaying from file database\n");
+	q = new;
+	if(q==NULL)
+	{
+		printf("No node to display from File database\n");
+	}
+	else
+	{
+		while(q!=NULL)
+		{
+			printf("%d->",q->data);
+			q= q->link;
+		}
 	}
 }
-
-
 
 void revers()
 {
@@ -231,4 +253,71 @@ void revers()
 		r->link= s;
 	}
 	p =r;
+}
+
+void save_to_file(void)
+{
+    FILE *fp;
+    int ret = 0;
+    fp = fopen("./linked_list_DB.txt","w+");
+    if(fp == NULL){
+        printf("File opening gets failed\n");
+        exit(0);
+    }
+    int i = 0;
+    struct node * temp = NULL;
+    temp = p;
+    while( temp != NULL){
+        printf("i    ==========> %d\n", i);
+        ret = fwrite(temp,sizeof(struct node),1,fp);
+        if(ret == 0){
+            break;
+        }
+        temp = temp->link;
+    }
+    fclose(fp);
+}
+
+void read_from_file(void)
+{
+    printf("reading from file\n");
+    struct node *temp = NULL;
+    FILE *fp = NULL;
+    int ret = 0;
+    int i =0;
+    fp = fopen("./linked_list_DB.txt","r+");
+    if(fp == NULL){
+        printf("Error in opening the file\n");
+        exit(0);
+    }
+
+    temp = new;
+    struct node *f = NULL;
+    while(!feof(fp)){
+        f = calloc(1,sizeof(struct node));  
+        if(f == NULL){
+            printf("Calloc_fails\n");
+            exit(0);
+        }
+        ret = fread(f,sizeof(struct node), 1, fp);
+        if(ret == 0){
+            break;
+        }
+        f->link = NULL;
+        printf("The value from file is %d\n",f->data); 
+        if(temp == NULL){
+            new = f;
+            temp = new;
+            printf("i = %d, value %d\n",i, temp->data);
+            i++;
+        }else{
+            while(temp->link != NULL){
+                printf("i = %d, value %d\n",i, temp->data);
+                i++;
+                temp = temp->link;
+            }
+            temp->link = f;
+        }
+    }
+     
 }
