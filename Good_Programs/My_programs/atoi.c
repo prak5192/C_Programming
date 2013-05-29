@@ -12,12 +12,11 @@ int main(int argc, char* argv[])
 
 int myatoi(const char *string)
 {
+    int j = 0;
     int i;
-    i=0;
-    while(*string)
+    for(i=0; string[i] >= '0' && string[i] <='9'; i++)
     {
-        i=(i<<3) + (i<<1) + (*string - '0');
-        string++;
+        j=(j<<3) + (j<<1) + (string[i] - '0');
     }
-    return(i);
+    return(j);
 }
