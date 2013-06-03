@@ -90,8 +90,10 @@ int main(int argc, char * argv[])
 {
    
     int i;
+    srand(time(NULL));
     for(i = 0; i < 10; i++){
-        add(i);
+        int num = (rand()%10);
+        add(num);   
     }
     display();
     split_function();
