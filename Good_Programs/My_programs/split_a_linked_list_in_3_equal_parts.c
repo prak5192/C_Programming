@@ -1,3 +1,15 @@
+#if 0
+
+This program is used to split the given number into three parts 
+eg:
+Orignal Linked list: 1 2 3 4 5 6 7 8 9
+Splited Linked list:
+List1 = 1 4 7
+List2 = 2 5 8
+List3 = 3 6 9
+
+#endif
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -10,9 +22,9 @@ typedef  struct Node{
 
 node *head = NULL;
 
-node *node1;
-node *node2;    
-node *node3;
+node *head1;
+node *head2;    
+node *head3;
 
 void add(int num)
 {
@@ -37,10 +49,10 @@ void add(int num)
     return ;
 }
     
-void display(void){
-    node *first = head;
+void display(node *thead){
+    node *first = thead;
     while(first != NULL){
-        printf("%d -> \t",first->data);
+        printf("%d  \t",first->data);
         first = first->link;
     }
     printf("\n");
@@ -49,43 +61,44 @@ void display(void){
 
 
 void split_function(void){
-    node1 = head;
-    node2 = NULL;
-    node3 = NULL;
-    
-    node *prev2 = NULL;
-    node *prev3 = NULL;;
+	head1 = head;
+    node *node1 = head;
+    node *node2 = NULL;
+    node *node3 = NULL;
+	if(node1->link != NULL){
+    	head2 = node1->link;
+		node2 = head2;
+	}
+	if(node1->link->link != NULL){
+    	head3 = node1->link->link;
+		node3 = head3;
+   	}
+ 
 
     int count  = 0;
-    node *curnode = head;
+    node *curnode = node1->link->link->link;
     
     while(curnode != NULL){
+        int mod = count % 3;
+        if(mod == 0){
+			node1->link = curnode;
+			node1 = curnode;
+        } else if (mod == 1){
+			node2->link = curnode;
+			node2 = curnode;
+		} else if( mod == 2){
+			node3->link = curnode;
+			node3 = curnode;
+    	}	
+		curnode = curnode->link;
         count++;
-        if(count >  3){
-            int mod = count % 3;
-            if( mod == 1){
-                prev2 = node2;
-                node2 = node2->link;
-                
-                prev3 = node3;
-                node3 = node3->link;
-            } else if( mod == 2 ){
-                prev3 = node3;
-                node3 = node3->link;
-            }
-        } else if (count == 2){
-            node2 = curnode ;
-        } else if(count == 3){
-                node3 = curnode;
-        }
-        curnode = curnode->link;
-    }
-    
-    prev2->link  = NULL;
-    prev2->link = NULL;
-    
+	}
+	node3->link = NULL;
+	node2->link = NULL;
+	node1->link = NULL;
     return ;
 }
+
 int main(int argc, char * argv[])
 {
    
@@ -95,9 +108,14 @@ int main(int argc, char * argv[])
         int num = (rand()%10);
         add(num);   
     }
-    display();
+    display(head);
     split_function();
-    display();
+	printf("================Splited List1===========\n");
+    display(head1);
+	printf("================Splited List2===========\n");
+    display(head2);
+	printf("================Splited List3===========\n");
+    display(head3);
 
     return 0;
 }
