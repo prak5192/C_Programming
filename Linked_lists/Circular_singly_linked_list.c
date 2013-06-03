@@ -9,7 +9,12 @@ struct node
     struct node *link;
 }*last;
 
-main()
+void create_list(int num);
+void addatbeg(int num);
+void addafter(int num,int pos);
+void del(int num);
+void display();
+int main( void )
 {
     int choice;
     int n;
@@ -71,9 +76,10 @@ main()
             printf("Wrong choice\n");
         }/*End of switch*/
     }/*End of while*/
+	return 0;
 }/*End of main()*/
 
-create_list(int num)
+void create_list(int num)
 {
     struct node *q,*tmp;
     tmp= malloc(sizeof(struct node));
@@ -92,7 +98,7 @@ create_list(int num)
     }
 }/*End of create_list()*/
 
-addatbeg(int num)
+void addatbeg(int num)
 {
     struct node *tmp;
     tmp = malloc(sizeof(struct node));
@@ -101,7 +107,7 @@ addatbeg(int num)
     last->link = tmp;
 }/*End of addatbeg()*/
 
-addafter(int num,int pos)
+void addafter(int num,int pos)
 {
 
     struct node *tmp,*q;
@@ -124,7 +130,7 @@ addafter(int num,int pos)
         last=tmp;
 }/*End of addafter()*/
 
-del(int num)
+void del(int num)
 {
     struct node *tmp,*q;
     if( last->link == last && last->info == num)  /*Only one element*/
@@ -165,7 +171,7 @@ del(int num)
     printf("Element %d not found\n",num);
 }/*End of del()*/
 
-display()
+void display()
 {
     struct node *q;
     if(last == NULL)
