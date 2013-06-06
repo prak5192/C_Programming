@@ -9,6 +9,14 @@ http://en.wikipedia.org/wiki/XOR_linked_list
 
 #endif
 
+/* Asuuming the size of pointer and size of unsigned int
+is same. So for doing Xor operation, we need to typecast the address
+into unsigned int. For this reason, the below gcc compiler options are
+dissabled */
+
+#pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
+#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -25,9 +33,9 @@ void insert( node ** head , int data , node ** tail)
     temp->data = data;
     temp->next = NULL;
  
-    if ( !(*head))
+    if (*head == NULL) // List is empty
     {
-        *head = temp;
+        *head = temp;  // First node in the list
         return ;
     }
     node * pre = NULL;
@@ -36,12 +44,12 @@ void insert( node ** head , int data , node ** tail)
     
     while( cur->next != pre)
     {
-        nxt = (node*)((unsigned int)cur->next ^(unsigned int)pre);
+        nxt = (node*)((unsigned int)cur->next ^ (unsigned int)pre);
         pre = cur;
         cur = nxt;
     }
  
-    cur->next = (node*)((unsigned int)cur->next^(unsigned int)temp);
+    cur->next = (node*)((unsigned int)cur->next ^ (unsigned int)temp);
     temp->next = cur ;
     *tail = temp ;
     return;
@@ -55,7 +63,7 @@ void print( node * head )
     while( cur )
     {
         printf(" %d ",cur->data);
-        nxt = (node*)((unsigned int)cur->next ^(unsigned int)pre);
+        nxt = (node*)((unsigned int)cur->next ^ (unsigned int)pre);
         pre = cur;
         cur = nxt;
     }
@@ -67,14 +75,16 @@ int main()
 {
     node * head = NULL;
     node * tail = NULL;
-    insert(&head,3,&tail);
-    insert(&head,5,&tail);
-    insert(&head,7,&tail);
-    insert(&head,11,&tail);
-    insert(&head,13,&tail);
+    srand(time(NULL));
+    int i;
+    for( i = 0; i < 10; i++){
+        int num = rand()% 100;
+        insert(&head, num, &tail);
+    } 
     print( head );
     print( tail );
     return 0;
 }
 
-
+/* Enabling the compiler warning option */
+#pragma GCC diagnostic pop
