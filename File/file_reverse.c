@@ -11,6 +11,7 @@
 #include<string.h>
 #include<stdlib.h>
 
+
 int main(int argc, char * argv[]){
 	printf("This program is used to reverse a content of one file and wite to other file.\n");
 	char c;
