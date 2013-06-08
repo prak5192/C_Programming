@@ -16,10 +16,11 @@ int autofill(int a[ROW][COL])
 {
     int i,j;
     int number = 0;
+    srand(time(NULL));
     for (i =0; i < ROW ; i++){
         for (j = 0; j<COL ; j++){
+            number = (rand()%100);
             a[i][j] = number;
-            number++; 
         }
     }
 }
@@ -41,7 +42,7 @@ int main(void)
     
     printf("\nPrinting the address of the arrays\n\n");
     for(i = 0; i < ROW; i++){
-        printf("A[%d] 's address  => %u\n",i , a[i]);
+        printf("A[%d] 's address  => %p\n",i , a[i]);
     } 
 
     printf("\nPrinting in different style\n\n");
@@ -51,6 +52,13 @@ int main(void)
         }
     }
 
+    printf("\nPrinting in different style\n\n");
+    for(i =0; i< ROW ; i++){
+        for (j = 0 ; j<COL ; j++){
+            printf("Array [%d][%d] => %d\n",i,j,*(a + i*COL + j)); // have to correct the code, Refer pointers of C 
+        }
+    }
+        
 
     return ret;
 }
