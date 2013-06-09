@@ -25,6 +25,16 @@ int autofill(int a[ROW][COL])
     }
 }
 
+
+void display(int *a, int i, int j){
+    printf("\nPrinting in different style\n\n");
+    for(i =0; i< ROW ; i++){
+        for (j = 0 ; j<COL ; j++){
+            printf("Array [%d][%d] => %d\n", i, j, *(a + i*COL + j)); 
+        }
+    }
+}
+
 int main(void)
 {
     int a[ROW][COL];
@@ -51,14 +61,6 @@ int main(void)
             printf("Array [%d][%d] => %d\n",i,j,*((*(a +i)) + j)); 
         }
     }
-
-    printf("\nPrinting in different style\n\n");
-    for(i =0; i< ROW ; i++){
-        for (j = 0 ; j<COL ; j++){
-            printf("Array [%d][%d] => %d\n",i,j,*(a + i*COL + j)); // have to correct the code, Refer pointers of C 
-        }
-    }
-        
 
     return ret;
 }
