@@ -1,0 +1,16 @@
+1. "*y => To copy the test in system buffer
+   "*p => To paste it into a file
+
+2. Ctrl + x + f => to find a file or any path from inside a file
+
+3. gf => to go to a file from inside a file.
+   Ctrl + o => to back to previous file
+   Ctrl + i => to toggel between the files.
+  
+4. m + any_key => Set mask
+   ' + marked_key
+
+
+
+   
+
