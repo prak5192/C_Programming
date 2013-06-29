@@ -30,7 +30,7 @@ main()
  
         switch ( choice ){
             case 1:
-                if ( top == MAX_SIZE - 1 ){
+                if ( top == (MAX_SIZE - 1) ){
                     printf("Error: Overflow\n\n");
                 } else {
                     printf("Enter the value to insert.\n");
