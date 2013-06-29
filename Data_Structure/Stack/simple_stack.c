@@ -1,3 +1,5 @@
+/* A Program to show the stack implementation */
+
 #include<stdio.h>
 #include<stdlib.h>
  
