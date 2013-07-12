@@ -1,113 +1,118 @@
-/* Simple binary tree program */
+/* A simple C code for binary tree */
 
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
-# include<stdio.h>
-# include<stdlib.h>
-# include<string.h>
-
-
-struct node
-{
+typedef struct node{
     struct node *left;
     int data;
     struct node *right;
-};
-void insert(struct node **,int);
-void inorder(struct node *);
-void postorder(struct node *);
-void preorder(struct node *);
+} Node;
 
-void main()
-{
-    struct node *ptr;
-    int will,i,num;
-    ptr = NULL;
-    printf("Enter the number of terms you want to add to the tree.\n");
-    scanf("%d",&will);
+void pre_order(Node *ptr);     
+void in_order(Node *ptr);
+void post_order(Node *ptr);
+int insert_in_order(Node ** ptr, int data);
 
-/* Getting Input */
-    for(i=0;i<will;i++)
-    {
-        printf("Enter the item\n");
-        scanf("%d",&num);
-        insert(&ptr,num);
+void pre_order(Node *ptr){
+    if(ptr !=  NULL){
+        printf("%d\n", ptr->data);
+        in_order(ptr->left);
+        in_order(ptr->right);
+    } else {
+        return ;
     }
-
-    printf("INORDER TRAVERSAL\n");
-    inorder(ptr);
-    printf("PREORDER TRAVERSAL\n");
-    preorder(ptr);
-    printf("POSTORDER TRAVERSAL\n");
-    postorder(ptr);
 }
 
-void insert(struct node  **p,int num)
-{
-    if((*p)==NULL)
-    {   
-        printf("Leaf node created.\n");
-        (*p)=malloc(sizeof(struct node));
-        (*p)->left = NULL;
-        (*p)->right = NULL;
-        (*p)->data = num;
-        return;
+void in_order(Node *ptr){
+    if(ptr !=  NULL){
+        in_order(ptr->left);
+        printf("%d\n", ptr->data);
+        in_order(ptr->right);
+    } else {
+        return ;
     }
-    else
-    {       
-        if(num==(*p)->data)
-        {
-            printf("REPEATED ENTRY ERROR VALUE REJECTED\n");
-            return;
+}
+
+void post_order(Node *ptr){
+    if(ptr !=  NULL){
+        printf("%d\n", ptr->data);
+        in_order(ptr->left);
+        in_order(ptr->right);
+    } else {
+        return ;
+    }
+}
+
+int insert_in_order(Node **ptr, int data){
+    Node *temp_ptr = NULL;
+    if( *ptr == NULL){
+         Node *temp_ptr = calloc(1,sizeof(Node));
+        if(temp_ptr == NULL){
+            printf("Error on malloc\n");
+        } 
+        temp_ptr->data = data;
+        temp_ptr->left = NULL;
+        temp_ptr->right = NULL;
+        *ptr = temp_ptr;
+        return 0;
+    } else {
+        if( (*ptr)->data < data){
+            insert_in_order(&((*ptr)->right), data);
+        } else {
+            insert_in_order(&((*ptr)->left), data);
         }
-        if(num<(*p)->data)
-        {
-            printf("Directed to left link.\n");
-            insert(&((*p)->left),num);
+    } 
+}    
+
+
+int main(int argc, char *argv[]){
+    int ret;
+    Node *node = NULL;
+    int choice = 1; 
+    int i;
+
+    do {
+        printf("Enter the choice for the Binary Tree\n");
+        scanf("%d", &choice);
+        switch (choice){
+            case 1:
+                printf("==============================================\n");
+                pre_order(node);
+                printf("==============================================\n");
+                break;
+            
+            case 2:
+                printf("==============================================\n");
+                in_order(node);
+                printf("==============================================\n");
+                break;
+            
+            case 3:
+                printf("==============================================\n");
+                post_order(node);
+                printf("==============================================\n");
+                break;
+            case 4: 
+                printf("==============================================\n");
+                for (i =0; i < 10; i++ ){
+                    int data = rand()%100;
+                    ret = insert_in_order(&node, data);
+                    if(ret != 0){
+                        printf("Something goes wrong in post-order\n");
+                    }
+                }
+                break;
+            case 5: 
+                exit(0);
+
+            case 6: 
+                printf("==============================================\n");
+                printf("The entered choice is not valid\n");
+                printf("==============================================\n");
+                break;
         }
-        else
-        {
-        printf("Directed to right link.\n");
-        insert(&((*p)->right),num);
-        }
-    }
-    return;
-}
-
-void inorder(struct node *p)
-{
-    if(p!=NULL)
-    {
-        inorder(p->left);
-        printf("Data :%d\n",p->data);
-        inorder(p->right);
-    }
-    else
-        return;
-}
-
-
-void preorder(struct node *p)
-{
-    if(p!=NULL)
-    {
-        printf("Data :%d\n",p->data);
-        preorder(p->left);
-        preorder(p->right);
-    }
-    else
-        return;
-}
-
-
-void postorder(struct node *p)
-{
-    if(p!=NULL)
-    {
-        postorder(p->left);
-        postorder(p->right);
-        printf("Data :%d\n",p->data);
-    }
-    else
-        return;
-}
-
+    }while(1);
+    return 0;
+ }
