@@ -14,7 +14,12 @@ void pre_order(Node *ptr);
 void in_order(Node *ptr);
 void post_order(Node *ptr);
 int insert_in_order(Node ** ptr, int data);
+void delete(Node *ptr, int data);
 
+/*
+    Displaying the Binary tree in pre-order
+eg. 1,2,3,4,5,6,7,8,9,10
+*/
 void pre_order(Node *ptr){
     if(ptr !=  NULL){
         printf("%d\n", ptr->data);
@@ -25,6 +30,12 @@ void pre_order(Node *ptr){
     }
 }
 
+/*
+    Displaying the Binary tree in in-order
+Print the root value first.
+Then print the left link in tree. 
+Then print the right link in tree.
+*/
 void in_order(Node *ptr){
     if(ptr !=  NULL){
         in_order(ptr->left);
@@ -34,6 +45,10 @@ void in_order(Node *ptr){
         return ;
     }
 }
+/*
+    Displaying the Binary tree in post order
+eg. 10,9,8,7,6,5,4,3,2,1
+*/
 
 void post_order(Node *ptr){
     if(ptr !=  NULL){
@@ -44,6 +59,10 @@ void post_order(Node *ptr){
         return ;
     }
 }
+
+/* 
+    Inserting data into the Binary tree in sorted order 
+*/
 
 int insert_in_order(Node **ptr, int data){
     Node *temp_ptr = NULL;
@@ -66,6 +85,11 @@ int insert_in_order(Node **ptr, int data){
     } 
 }    
 
+void delete(Node **ptr, int data){
+
+
+    return;
+}
 
 int main(int argc, char *argv[]){
     int ret;
@@ -104,6 +128,13 @@ int main(int argc, char *argv[]){
                     }
                 }
                 break;
+            case 5:
+                printf("==============================================\n");
+                printf("Enter the data you want to delete from the binary tree\n");
+                scanf("%d", &data);
+                delete(&node, data);
+                break; 
+            
             case 5: 
                 exit(0);
 
