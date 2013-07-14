@@ -14,7 +14,7 @@ void pre_order(Node *ptr);
 void in_order(Node *ptr);
 void post_order(Node *ptr);
 int insert_in_order(Node ** ptr, int data);
-void delete(Node *ptr, int data);
+void delete(Node **ptr, int data);
 
 /*
     Displaying the Binary tree in pre-order
@@ -86,8 +86,93 @@ int insert_in_order(Node **ptr, int data){
 }    
 
 void delete(Node **ptr, int data){
+    Node *current;
+    Node *prev;
+    int found =0;
+    if (*ptr == NULL){
+        printf("Tree is empty\n");
+        return; 
+    }
+    current = *ptr;
+    while(current != NULL){
+        if(current->data == data){
+            found = 1;
+            break;
+        } else {
+            prev = current;
+            if(current->data >= data){
+                current = current->left;
+            } else {
+                current = current->right;
+            }
+        }
+    }
+    if(found == 0){
+        printf("Given data is not found in the tree\n");
+        return;
+    }
 
+/*
+    Delete node has no left , no  right wings 
+*/
+    
+    if((current->left == NULL) && (current->right == NULL)){
+        if(prev->left == current){
+            prev->left == NULL;
+        } else {
+            prev->right == NULL;
+        }
+        free(current);
+    }
 
+/*
+    Delete node (either left or right child )
+*/
+
+    if((current->left == NULL) && (current->right != NULL)){
+        if(prev->left = current){
+            prev->left = current->left;
+        } else {
+            prev->right = current->right;
+        }
+        free(current);
+    }
+
+    if((current->right == NULL) && (current->left != NULL)){
+        if(prev->left = current){
+            prev->left = current->left;
+        } else {
+            prev->right = current->right;
+        }
+        free(current);
+    }
+   
+/*
+   Delete the node with both left and right child 
+*/
+    if((current->left != NULL) && (current->right != NULL)){
+        Node *tmp = current->right;
+        if((tmp->left == NULL) && (tmp->right == NULL)){
+            current->data = tmp->data;
+            free(tmp);
+            current->right = NULL;
+        } else if(current->right->left != NULL) {
+            Node *left_current = current->right;
+            Node *left_current_prev = current->right->left;
+            while(left_current->left != NULL){
+                left_current_prev = left_current;
+                left_current = left_current->left;
+            }
+            current->data = left_current->data;
+            free(left_current);
+        } else {
+            Node *temp;
+            temp = current->right;
+            current->data = temp->data;
+            current->right = temp->right;
+            free(temp);
+        }
+    }
     return;
 }
 
@@ -131,14 +216,15 @@ int main(int argc, char *argv[]){
             case 5:
                 printf("==============================================\n");
                 printf("Enter the data you want to delete from the binary tree\n");
+                int data;
                 scanf("%d", &data);
                 delete(&node, data);
                 break; 
             
-            case 5: 
+            case 6: 
                 exit(0);
 
-            case 6: 
+            case 7: 
                 printf("==============================================\n");
                 printf("The entered choice is not valid\n");
                 printf("==============================================\n");
