@@ -1,5 +1,7 @@
 /* A simple C code for binary tree */
 
+/* Have to learn this binary tree by  this week */
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
