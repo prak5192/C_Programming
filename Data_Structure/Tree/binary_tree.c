@@ -18,9 +18,12 @@ void post_order(Node *ptr);
 int insert_in_order(Node ** ptr, int data);
 void delete(Node **ptr, int data);
 
+
 /*
-    Displaying the Binary tree in pre-order
-eg. 1,2,3,4,5,6,7,8,9,10
+    Displaying the Binary tree in in-order
+Print the root value first.
+Then print the left link in tree. 
+Then print the right link in tree.
 */
 void pre_order(Node *ptr){
     if(ptr !=  NULL){
@@ -33,10 +36,8 @@ void pre_order(Node *ptr){
 }
 
 /*
-    Displaying the Binary tree in in-order
-Print the root value first.
-Then print the left link in tree. 
-Then print the right link in tree.
+    Displaying the Binary tree in pre-order
+eg. 1,2,3,4,5,6,7,8,9,10
 */
 void in_order(Node *ptr){
     if(ptr !=  NULL){
