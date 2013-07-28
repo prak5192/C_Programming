@@ -183,6 +183,7 @@ int main(int argc, char *argv[]){
     int ret;
     Node *node = NULL;
     int choice = 1; 
+    int arr[16] ={10,8,4,6,3,5,2,1,20,15,16,13,12,14,18,19};
     int i;
 
     do {
@@ -214,9 +215,8 @@ int main(int argc, char *argv[]){
                 break;
             case 4: 
                 printf("==============================================\n");
-                for (i =0; i < 10; i++ ){
-                    int data = rand()%100;
-                    ret = insert_in_order(&node, data);
+                for (i =0; i < 16; i++ ){
+                    ret = insert_in_order(&node, arr[i]);
                     if(ret != 0){
                         printf("Something goes wrong in post-order\n");
                     }
