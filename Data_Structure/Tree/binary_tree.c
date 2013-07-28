@@ -186,6 +186,12 @@ int main(int argc, char *argv[]){
 
     do {
         printf("Enter the choice for the Binary Tree\n");
+        printf("1.display in pre_order\n");
+        printf("2.display in in_order\n");
+        printf("3.display in post_order\n");
+        printf("4.Insert data in order\n");
+        printf("5.Delete a node from the tree\n");
+        printf("6.Exit\n");
         scanf("%d", &choice);
         switch (choice){
             case 1:
