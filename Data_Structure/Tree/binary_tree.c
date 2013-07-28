@@ -119,6 +119,7 @@ void delete(Node **ptr, int data){
     while(current != NULL){
         if(current->data == data){
             found = 1;
+            printf("Delete data found :%d\n", current->data );
             break;
         } else {
             prev = current;
@@ -140,11 +141,12 @@ void delete(Node **ptr, int data){
     
     if((current->left == NULL) && (current->right == NULL)){
         if(prev->left == current){
-            prev->left == NULL;
+            prev->left = NULL;
         } else {
-            prev->right == NULL;
+            prev->right = NULL;
         }
         free(current);
+        return;
     }
 
 /*
@@ -158,6 +160,7 @@ void delete(Node **ptr, int data){
             prev->right = current->right;
         }
         free(current);
+        return ;
     }
 
     if((current->right == NULL) && (current->left != NULL)){
@@ -167,6 +170,7 @@ void delete(Node **ptr, int data){
             prev->right = current->right;
         }
         free(current);
+        return;
     }
    
 /*
