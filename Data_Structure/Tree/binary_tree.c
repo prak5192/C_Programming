@@ -46,7 +46,7 @@ Then print the right link in tree.
 */
 void pre_order(Node *ptr){
     if(ptr !=  NULL){
-        printf("%d\n", ptr->data);
+        printf("%d\t", ptr->data);
         in_order(ptr->left);
         in_order(ptr->right);
     } else {
@@ -61,7 +61,7 @@ eg. 1,2,3,4,5,6,7,8,9,10
 void in_order(Node *ptr){
     if(ptr !=  NULL){
         in_order(ptr->left);
-        printf("%d\n", ptr->data);
+        printf("%d\t", ptr->data);
         in_order(ptr->right);
     } else {
         return ;
@@ -74,7 +74,7 @@ eg. 10,9,8,7,6,5,4,3,2,1
 
 void post_order(Node *ptr){
     if(ptr !=  NULL){
-        printf("%d\n", ptr->data);
+        printf("%d\t", ptr->data);
         in_order(ptr->left);
         in_order(ptr->right);
     } else {
@@ -218,19 +218,19 @@ int main(int argc, char *argv[]){
             case 1:
                 printf("==============================================\n");
                 pre_order(node);
-                printf("==============================================\n");
+                printf("\n==============================================\n");
                 break;
             
             case 2:
                 printf("==============================================\n");
                 in_order(node);
-                printf("==============================================\n");
+                printf("\n==============================================\n");
                 break;
             
             case 3:
                 printf("==============================================\n");
                 post_order(node);
-                printf("==============================================\n");
+                printf("\n==============================================\n");
                 break;
             case 4: 
                 printf("==============================================\n");
@@ -252,7 +252,7 @@ int main(int argc, char *argv[]){
             case 6: 
                 exit(0);
 
-            case 7: 
+            default: 
                 printf("==============================================\n");
                 printf("The entered choice is not valid\n");
                 printf("==============================================\n");
