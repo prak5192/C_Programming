@@ -1,5 +1,24 @@
 /* A simple C code for binary tree */
 
+/*
+
+                  10
+               /      \
+              8       20
+             /        / 
+            4        15  
+          /  \       /  \
+         3    5     13   16
+        /      \    /  \   \
+       2        6  12  14   18
+                               \
+                               19
+
+*/
+
+
+
+
 /* Have to learn this binary tree by  this week */
 
 #include<stdio.h>
