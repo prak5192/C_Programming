@@ -1,10 +1,10 @@
 /* 
- * A example of 2D array
- */
+	A example of 2D array
+*/
 
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define PASS    0
 #define FAIL    1
 #define ROW     5
