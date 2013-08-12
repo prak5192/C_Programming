@@ -9,11 +9,17 @@ int main(void){
                     9,0,6,7
                   };
     int *ptr;
-    ptr = &a;
+    ptr = (int *)a;
     
-    printf("%u\n",a[2]);
+    printf("%p\n",a[2]);
     printf("%d\n",ptr[2]);
     printf("%d\n",*(ptr + 2));
+	ptr++;
+	ptr++;
+	ptr++;
+	ptr++;
+	ptr++;
+    printf("%d\n",*ptr);
     
     
     return 0;
